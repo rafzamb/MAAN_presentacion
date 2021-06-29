@@ -28,7 +28,7 @@ library(lubridate)
 
 class: center
 
-```{r xaringan-themer, include=FALSE, warning=FALSE, eval=TRUE}
+```{r xaringan-themer, include=FALSE, warning=FALSE, eval=FALSE}
 library(xaringanthemer)
 #style_mono_light(base_color = "#23395b")
 #style_duo_accent(primary_color = "#FFFFFF", secondary_color = "#FA795E")
@@ -80,6 +80,44 @@ knitr::include_graphics('fondo_fce.png')
 #### Rafael Zambrano
 
 ---
+
+# Ocurrencia de delitos
+
+🔸 La ocurrencia de delitos es un fenomeno de índole social y económico, dado lo amplio y transversal que resulta estudiar este tópico, se aborda el tema mediante una relación funcional entre la problemática y **la dualidad “entorno-tiempo”**. 
+
+<br>
+<br>
+
+---
+# Campos de aplicación actual
+
+🔸 Computer vision
+
+```{r, echo=FALSE, out.width='40%',out.height='40%',fig.align='center'}
+knitr::include_graphics('vision.png')
+```
+
+---
+# Campos de aplicación actual
+
+🔸 Sound / Text Analysis
+
+```{r, echo=FALSE, out.width='70%',out.height='70%',fig.align='center'}
+knitr::include_graphics('sound.png')
+```
+
+---
+# Campos de aplicación actual
+
+🔸 Temporal-Geographic analysis
+
+* [Predictable Policing: Measuring the Crime Control Benefits of Hotspots Policing at Bus Stops](https://link.springer.com/article/10.1007/s10940-016-9312-y)
+
+* [Prediction of Suspect Location Based on Spatiotemporal Semantics](https://www.mdpi.com/2220-9964/6/7/185/htm)
+
+* [Grid-Based Crime Prediction Using Geographical Features](https://www.mdpi.com/2220-9964/7/8/298/htm)
+
+---
 # Resumen
 
 🔸 En la ciudad de Taoyuan (Taiwán), se realizó un estudio de predicción de delitos basado en cuadrículas, comparando el rendimiento de **modelos de aprendizaje automático con un modelo de aprendizaje profundo**. 
@@ -91,21 +129,6 @@ knitr::include_graphics('fondo_fce.png')
 🔸 Se estableció una línea base, que consistió en una media móvil de los últimos 11 meses para predecir el mes número 12. Fueron implementados modelos de aprendizaje automático como Random Decision Forest, Support Vector Machine y K-Near Neighbor, además, se implementó un modelo DNN.
 
 🔸 El modelo de DNN resultó ser el que obtuvo un mejor rendimiento, en función de la métrica F1, mostrando una mejora de aproximadamente el 7% sobre el modelo base.
-
----
-
-# Problemática
-
-🔸 La ocurrencia de delitos es un fenomeno de índole social y económico, dado lo amplio y transversal que resulta estudiar este tópico, se aborda el tema mediante una relación funcional entre la problemática y **la dualidad “entorno-tiempo”**. 
-
-<br>
-<br>
-
---
-
-```{r, echo=FALSE, out.width='80%',fig.align='center'}
-knitr::include_graphics('problematica.png')
-```
 
 ---
 
@@ -143,7 +166,7 @@ knitr::include_graphics('problematica.png')
 
 --
 
-```{r, echo=FALSE, out.width='80%',out.height='50%', fig.align='center'}
+```{r, echo=FALSE, out.width='60%',out.height='40%', fig.align='center'}
 knitr::include_graphics('googleplaces.png')
 ```
 
@@ -155,7 +178,7 @@ knitr::include_graphics('googleplaces.png')
  
 * Incidencia histórica de delitos
 
-```{r, echo=FALSE, out.width='80%',out.height='50%', fig.align='center'}
+```{r, echo=FALSE, out.width='70%',out.height='40%', fig.align='center'}
 knitr::include_graphics('eda.png')
 ```
 
