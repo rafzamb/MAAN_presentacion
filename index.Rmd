@@ -1,330 +1,365 @@
 ---
-title: "Presentation Ninja"
-subtitle: "&#x2694;&#xFE0F; xaringan +<br/>&#x1F60E; xaringanthemer"  
-author: 
-  - "Yihui Xie"
-  - "Garrick Aden-Buie"
-date: '`r Sys.Date()`'
+title: "Metodologías avanzadas de aprendizaje automático para la gestión en las organizaciones"
+subtitle: "Segunda Evaluación"
+author: "Rafael Zambrano"
+institute: "Universidad de Buenos Aires, Facultad de Ciencias Economicas, ENAP"
+date: "2021/06/29"
 output:
   xaringan::moon_reader:
+    seal: false
     css: xaringan-themer.css
     nature:
-      slideNumberFormat: "%current%"
-      highlightStyle: github
-      highlightLines: true
-      ratio: 16:9
-      countIncrementalSlides: true
+      countIncrementalSlides: false
+      navigation: 
+        scroll: false
 ---
 
 ```{r setup, include=FALSE}
-options(htmltools.dir.version = FALSE)
-knitr::opts_chunk$set(
-  fig.width=9, fig.height=3.5, fig.retina=3,
-  out.width = "100%",
-  cache = FALSE,
-  echo = TRUE,
-  message = FALSE, 
-  warning = FALSE,
-  fig.show = TRUE,
-  hiline = TRUE
-)
+knitr::opts_chunk$set(warning = FALSE, 
+                      message = FALSE, 
+                      comment=FALSE)
 ```
 
-```{r xaringan-themer, include=FALSE, warning=FALSE}
+```{r ,echo=FALSE}
+library(tidyverse)
+library(lubridate)
+```
+
+
+class: center
+
+```{r xaringan-themer, include=FALSE, warning=FALSE, eval=TRUE}
 library(xaringanthemer)
-style_duo_accent(
-  primary_color = "#1381B0",
-  secondary_color = "#FF961C",
-  inverse_header_color = "#FFFFFF"
-)
+#style_mono_light(base_color = "#23395b")
+#style_duo_accent(primary_color = "#FFFFFF", secondary_color = "#FA795E")
+style_duo_accent(primary_color = "#FA795E",
+                 secondary_color = "#FFFFFF",
+                 header_h1_font_size = "1.8rem",
+                 header_h2_font_size = "1.5rem",
+                 header_h3_font_size = "1.0rem"
+                 )
+#style_duo_accent_inverse(primary_color = "#FFFFFF", secondary_color = "#FA795E")
+#style_duo_accent_inverse(primary_color = "#FA795E", secondary_color = "#FFFFFF")
 ```
 
-## Typography
 
-Text can be **bold**, _italic_, ~~strikethrough~~, or `inline code`.
+```{r, echo=FALSE}
+knitr::include_graphics('fondo_fce.png')
+```
 
-[Link to another slide](#colors).
+<br>
+<br>
+<br>
+<br>
 
-### Lorem Ipsum
+```{r, echo=FALSE}
+knitr::include_graphics('titulo.png') 
+```
 
-Dolor imperdiet nostra sapien scelerisque praesent curae metus facilisis dignissim tortor. 
-Lacinia neque mollis nascetur neque urna velit bibendum. 
-Himenaeos suspendisse leo varius mus risus sagittis aliquet venenatis duis nec.
+<br>
+<br>
 
-- Dolor cubilia nostra nunc sodales
+#### 2021-06-29
+---
+class: center
 
-- Consectetur aliquet mauris blandit
+```{r, echo=FALSE}
+knitr::include_graphics('fondo_fce.png')
+```
 
-- Ipsum dis nec porttitor urna sed
+<br>
+<br>
+<br>
+
+# Asignatura: Metodologías avanzadas de aprendizaje automático para la gestión en las organizaciones
+
+<br>
+
+## Segunda Evaluación
+
+#### Rafael Zambrano
 
 ---
-name: colors
+# Resumen
 
-## Colors
+🔸 En la ciudad de Taoyuan (Taiwán), se realizó un estudio de predicción de delitos basado en cuadrículas, comparando el rendimiento de **modelos de aprendizaje automático con un modelo de aprendizaje profundo**. 
 
-- <span style="color: var(--text-color)">Text Color</span>
+🔸 Se aplicó un esquema de modelado basado en cuadrículas geográficas, este permitió  establecer una gama de características espacio-temporales basadas en 84 variables.
 
-- <span style="color: var(--header-color); font-family: var(--header-font-family);">Header Color</span>
+🔸 Fueron seleccionados los delitos del tipo **“robo de vehículo”**, para el periodo enero - 2015 / abril - 2018, realizando predicciones para el periodo enero - 2017 / abril - 2018.
 
-- <span style="color: var(--link-color)">Link Color</span>
+🔸 Se estableció una línea base, que consistió en una media móvil de los últimos 11 meses para predecir el mes número 12. Fueron implementados modelos de aprendizaje automático como Random Decision Forest, Support Vector Machine y K-Near Neighbor, además, se implementó un modelo DNN.
 
-- <span style="color: var(--text-bold-color); font-weight: bold;">Bold Color</span>
-
-- `inline code color`
+🔸 El modelo de DNN resultó ser el que obtuvo un mejor rendimiento, en función de la métrica F1, mostrando una mejora de aproximadamente el 7% sobre el modelo base.
 
 ---
 
-# Big Topic or Inverse Slides `#`
+# Problemática
 
-## Slide Headings `##`
+🔸 La ocurrencia de delitos es un fenomeno de índole social y económico, dado lo amplio y transversal que resulta estudiar este tópico, se aborda el tema mediante una relación funcional entre la problemática y **la dualidad “entorno-tiempo”**. 
 
-### Sub-slide Headings `###`
-
-#### Bold Call-Out `####`
-
-This is a normal paragraph text. Only use header levels 1-4.
-
-##### Possible, but not recommended `#####`
-
-###### Definitely don't use h6 `######`
-
----
-class: inverse center middle
-
-# Topic Changing Interstitial
+<br>
+<br>
 
 --
 
-```
-class: inverse center middle
-```
-
----
-layout: true
-
-## Blocks
-
----
-
-### Blockquote
-
-> This is a blockquote following a header.
->
-> When something is important enough, you do it even if the odds are not in your favor.
-
----
-
-### Code Blocks
-
-#### R Code
-
-```{r eval=FALSE}
-ggplot(gapminder) +
-  aes(x = gdpPercap, y = lifeExp, size = pop, color = country) +
-  geom_point() +
-  facet_wrap(~year)
-```
-
-#### JavaScript
-
-```js
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
-}
+```{r, echo=FALSE, out.width='80%',fig.align='center'}
+knitr::include_graphics('problematica.png')
 ```
 
 ---
 
-### More R Code
+# Problemática
 
-```{r eval=FALSE}
-dplyr::starwars %>% dplyr::slice_sample(n = 4)
-```
+🔸 Taoyuan es una de las ciudades más grandes de Taiwán con una población de 2,1 millones para 2018.  Entre 2015 a 2016 se registró un promedio anual de alrededor de 20.000 delitos.
+
+🔸 Según el Índice de delitos [NUMBEO](https://www.numbeo.com/crime/in/Taoyuan) de 2018, el puntaje de delitos de Taoyuan fue de 27,5 , que es más alto que el promedio en Taiwán ( 20.74).
 
 ---
 
-```{r message=TRUE}
-cli::cli_alert_success("It worked!")
-```
+# Problemática
+ 
+## Enfoque tradicional
+ 
+* Modelos espacio-temporales
+ 
+🔸 Estos métodos incluyen la estimación de densidad de kernel (KDE) y modelos de series temporales. Sin embargo, estos dos métodos solo consideran el tiempo o el espacio de forma independiente, pero el crimen se ve afectado por más de un factor.
+ 
+--
+ 
+🔸 Cuando este enfoque se aplica en base a cuadrículas espaciales, sólo se examinan factores como el tiempo, el espacio y el tipo de delito, pero rara vez se discuten las características geográficas de la cuadrícula.
+ 
+---
+
+# Transformación y limpieza de datos
+ 
+* **Fuente de datos**
+ 
+🔸 Este estudio integra aspectos experienciales con características geográficas adicionales para simular el entorno delictivo y permitir modelos de predicción de delitos basados.
+ 
+🔸 Los delitos registrados se extrajeron de un repositorio de datos abiertos del gobierno de Taiwán. [Link Repostiorio](https://data.gov.tw).   
+ 
+🔸 Se extraen y generan características espacio-temporales basadas en 84 tipos de información geográfica mediante la API de Google Places, estos datos se enlazan con el registro de delitos de la ciudad.
 
 --
 
-```{r message=TRUE}
-message("Just a friendly message")
-```
-
---
-
-```{r warning=TRUE}
-warning("This could be bad...")
-```
-
---
-
-```{r error=TRUE}
-stop("I hope you're sitting down for this")
-```
-
-
----
-layout: true
-
-## Tables
-
----
-
-```{r}
-tibble::as_tibble(mtcars)
+```{r, echo=FALSE, out.width='80%',out.height='50%', fig.align='center'}
+knitr::include_graphics('googleplaces.png')
 ```
 
 ---
 
-```{r}
-knitr::kable(head(mtcars), format = 'html')
+# Transformación y limpieza de datos
+ 
+## EDA
+ 
+* Incidencia histórica de delitos
+
+```{r, echo=FALSE, out.width='80%',out.height='50%', fig.align='center'}
+knitr::include_graphics('eda.png')
+```
+
+---
+# Transformación y limpieza de datos
+ 
+## Creación de cuadrículas espaciales
+
+```{r, echo=FALSE, out.width='80%', fig.align='center'}
+knitr::include_graphics('grid_esquema.png')
+```
+
+🔸 Se calcula el número de delitos ocurridos dentro de cada cuadrícula para cada uno de los meses de estudio.
+
+---
+# Transformación y limpieza de datos
+ 
+## Esquema de partición de datos
+
+<br>
+
+```{r, echo=FALSE, out.width='80%', fig.align='center'}
+knitr::include_graphics('time_esquema.png')
+```
+
+---
+# Transformación y limpieza de datos
+ 
+## Creación de variables delictivas
+ 
+🔸 Temporales:
+ 
+* Cálculo acumulativo de delitos en ventanas de tiempo (condición demográfica).
+* Cálculo de delitos ocurridos en el mismo mes del año anterior (patrón estacional).
+ 
+🔸 Espaciales:
+ 
+* Características de la cuadrícula (simulación de escenas delictivas).
+* Cuadrículas adyacentes (desplazamiento del delito).
+
+---
+
+# Transformación y limpieza de datos
+ 
+## Creación de variables delictivas
+
+```{r, echo=FALSE, out.width='80%', fig.align='center'}
+knitr::include_graphics('cracateristicas_esquema.png')
 ```
 
 ---
 
-```{r}
-DT::datatable(head(mtcars), fillContainer = FALSE, options = list(pageLength = 4))
-```
+# Modelo Base
 
----
-layout: true
+<br>
 
-## Lists
+🔸 Medias móviles
 
----
-
-.pull-left[
-#### Here is an unordered list:
-
-*   Item foo
-*   Item bar
-*   Item baz
-*   Item zip
-]
-
-.pull-right[
-
-#### And an ordered list:
-
-1.  Item one
-1.  Item two
-1.  Item three
-1.  Item four
-]
-
----
-
-### And a nested list:
-
-- level 1 item
-  - level 2 item
-  - level 2 item
-    - level 3 item
-    - level 3 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-  - level 2 item
-  - level 2 item
-- level 1 item
-
----
-
-### Nesting an ol in ul in an ol
-
-- level 1 item (ul)
-  1. level 2 item (ol)
-  1. level 2 item (ol)
-    - level 3 item (ul)
-    - level 3 item (ul)
-- level 1 item (ul)
-  1. level 2 item (ol)
-  1. level 2 item (ol)
-    - level 3 item (ul)
-    - level 3 item (ul)
-  1. level 4 item (ol)
-  1. level 4 item (ol)
-    - level 3 item (ul)
-    - level 3 item (ul)
-- level 1 item (ul)
-
----
-layout: true
-
-## Plots
-
----
-
-```{r plot-example}
-library(ggplot2)
-(g <- ggplot(mpg) + aes(hwy, cty, color = class) + geom_point())
+```{r, echo=FALSE, out.width='80%', fig.align='center'}
+knitr::include_graphics('ma.png')
 ```
 
 ---
 
-```{r plot-example-themed}
-g + xaringanthemer::theme_xaringan(text_font_size = 16, title_font_size = 18) +
-  ggtitle("A Plot About Cars")
+# Modelos de Aprendizaje automático
+
+🔸 K-Nemost Neighbor (KNN)
+
+🔸 Support Vector Machine (SVM) 
+
+🔸 Random Decision Forest (RF )
+
+* Ejemplo del ajuste del modelo KNN
+
+```{r, echo=FALSE, out.width='80%', fig.align='center'}
+knitr::include_graphics('ml.png')
 ```
 
 ---
-layout: false
 
-## Square image
-
-<center><img src="https://octodex.github.com/images/labtocat.png" height="400px" /></center>
-
-.footnote[GitHub Octocat]
-
----
-
-### Wide image
-
-![](https://guides.github.com/activities/hello-world/branching.png)
-
-.footnote[Wide images scale to 100% slide width]
+# Modelo de Aprendizaje Profundo
+ 
+🔸 Se utilizó un modelo de DNN de capas ocultas profundas con un mecanismo de dropout con las siguientes características:
+ 
+* 9 capas con 100 neuronas cada una.
+* Dropout de 0.2 para todas las capas
+* Se usó ReLu como función de activación, presentó un mejor rendimiento que la función sigmoide.
+* 45 épocas.
+* Tasa de aprendizaje de 0.001
+* Se utilizó el framework de deep learning de h2o.
 
 ---
 
-## Two images
+# Modelo de Aprendisaje Profundo
 
-.pull-left[
-![](https://octodex.github.com/images/motherhubbertocat.png)
-]
+* Estructura del modelo DNN
 
-.pull-right[
-![](https://octodex.github.com/images/dinotocat.png)
-]
+```{r ,eval=FALSE}
+ model_dp =  h2o.deeplearning(x = dataX,
+                              y = dataY,
+                              training_frame = dtrain,
+                              hidden = c(100,100,100,100,100,100,100,100,100),
+                              activation = "RectifierWithDropout",
+                              input_dropout_ratio = 0.2,
+                              hidden_dropout_ratios = rep(0.2,9),
+                              rate = 0.001,
+                              epochs = 45)
+```
+
+---
+
+# Comparación de modelos
+
+<br>
+
+```{r, echo=FALSE, out.width='80%', fig.align='center'}
+knitr::include_graphics('comparacion_plot.png')
+```
 
 ---
 
-### Definition lists can be used with HTML syntax.
+# Comparación de modelos
 
-<dl>
-<dt>Name</dt>
-<dd>Godzilla</dd>
-<dt>Born</dt>
-<dd>1952</dd>
-<dt>Birthplace</dt>
-<dd>Japan</dd>
-<dt>Color</dt>
-<dd>Green</dd>
-</dl>
+🔸 Se utilizó una prueba t para determinar si la diferencia de rendimiento entre estos métodos era estadísticamente significativa
+
+<br>
+
+```{r, echo=FALSE, out.width='80%', fig.align='center'}
+knitr::include_graphics('comparacion_table.png')
+```
 
 ---
+
+# Rendimiento del modelo DNN para cada partición.
+
+<br>
+
+```{r, echo=FALSE, out.width='80%', fig.align='center'}
+knitr::include_graphics('dnn_table.png')
+```
+
+---
+# Rendimiento promedio del modelo DNN para distintas métricas.
+
+<br>
+
+```{r, echo=FALSE, out.width='80%', fig.align='center'}
+knitr::include_graphics('dnn_metricas.png')
+```
+
+---
+
+# Importancia de variables
+
+🔸 Se ejecutan las predicciones agregando dos escenarios, excluyendo las variables geográficas y dejando únicamente las variables geográficas.
+
+<br>
+
+```{r, echo=FALSE, out.width='80%', fig.align='center'}
+knitr::include_graphics('iv_1.png')
+```
+
+---
+
+# Importancia de variables
+
+🔸 Calculando la suma acumulada de las 10 características más importantes de un período de 16 meses.
+
+
+```{r, echo=FALSE, out.width='80%', fig.align='center'}
+knitr::include_graphics('iv_2.png')
+```
+
+🔸 Se muestra que los factores espacio-temporales siguen siendo los más influyentes en la cuadrícula.
+
+---
+# Conclusiones
+
+🔸 Los enfoques tradicionales basados en cuadrículas, muestran que un conjunto de entrenamiento de características excesivamente pequeño da como resultado una superposición de información excesiva.
+ 
+🔸 Se pueden generar nuevas características para mejorar las predicciones,  pero un gran número de características puede no ser lo más adecuado debido a la existencia de correlaciones débiles.
+ 
+🔸 Esta es la razón por la que el DNN supera a las técnicas tradicionales de aprendizaje automático y los enfoques de series de tiempo, permitiendo usar más características con relaciones más complejas, que permitan mejorar la discriminacion de las observaciones, sin ser afectados por las correlaciones débiles del exceso de variables. 
+
+🔸 El principal desafío del estudio, estaba concentrado en la extracción de las características de las cuadrículas, punto que fue parcialmente solventado por la API de Google Place. Este punto fue clave, especialmente para incorporar el factor latente de la movilidad del delito a distintos ambientes según patrones estacionales.
+
+---
+
+# Futuras investigaciones o mejoras
+
+🔸 El juicio experto de los agentes de policías no debe sustituirse por los avances tecnológicos y de modelado, todo lo contrario, deben complementarse y existir una retroalimentación para usar de mejor manera las bases de datos.
+ 
+🔸 Se abre la posibilidad de incluir otro tipos de variables predictivas, como por ejemplo bares, y territorios de pandillas, junto con características que inhiben el crimen, como cámaras de vigilancia y estaciones de policía. 
+ 
+🔸 Las variables meteorológicas como el clima y la temperatura, también pueden considerarse.
+ 
+🔸 Se pueden indexar nuevas variables que describen el desplazamiento del crimen, como acciones policiales, controles y zonas de amortiguamiento para simular los efectos del desplazamiento con mayor precisión.
+
+---
+
 class: center, middle
 
-# Thanks!
+# Muchas Gracias !!
 
-Slides created via the R packages:
+## Contacto ✉
+Rafael Zambrano [![Twitter Badge](https://img.shields.io/badge/-@rafa_zamr-1ca0f1?style=flat&labelColor=1ca0f1&logo=twitter&logoColor=white&link=https://twitter.com/rafa_zamr)](https://twitter.com/rafa_zamr) [![Linkedin Badge](https://img.shields.io/badge/-rafael zambrano-blue?style=flat&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/rafael-zambrano/)](https://www.linkedin.com/in/rafael-zambrano/) [![Github Badge](https://img.shields.io/badge/-rafzamb-black?style=flat&logo=Github&logoColor=white&link=https://github.com/rafzamb)](https://github.com/rafzamb) [![Website Badge](https://img.shields.io/badge/-Personal%20blog-47CCCC?style=flat&logo=Google-Chrome&logoColor=white&link=https://rafael-zambrano-blog-ds.netlify.app/)](https://rafael-zambrano-blog-ds.netlify.app/)
 
-[**xaringan**](https://github.com/yihui/xaringan)<br>
-[gadenbuie/xaringanthemer](https://github.com/gadenbuie/xaringanthemer)
-
-The chakra comes from [remark.js](https://remarkjs.com), [**knitr**](http://yihui.name/knitr), and [R Markdown](https://rmarkdown.rstudio.com).
